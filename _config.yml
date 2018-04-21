@@ -1,3 +1,4 @@
-remote-theme: MTCoster/pages-theme
+remote-theme: garrettboatman/Blank-Theme-Jekyll
 title: Experiments with GitHub Pages
 description: Very much always a WIP
+permalink: /:title
