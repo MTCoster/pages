@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+<h2>&lt;EVENT_NAME&gt;</h2>
+{{ content }}
+
+{% for key in page.speakers %}
+    {% assign speaker = site.speakers | where: "name", key | first %}
+
+    <div class="speaker">
+        <h3>{{ speaker.name }}</h3>
+        <p>{{ speaker.content | markdownify }}</p>
+    </div>
+    <img src="//img.youtube.com/vi/{{ speaker.video }}/mqdefault.jpg">
+{% endfor %}
+
+<hr>

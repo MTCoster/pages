@@ -1,1 +1,12 @@
-<h2>Header</h2>
+<header>
+    <div class="container">
+        <img class="brand" src="//placehold.it/440x88.png?text={{ "TEDxWarwick (5:1)" | cgi_escape }}">
+        <nav>
+            <ul>
+                {% for item in site.nav %}
+                    <li><a href="{{ item.page | relative_url }}">{{ item.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+</header>

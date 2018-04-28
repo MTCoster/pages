@@ -2,3 +2,45 @@ remote-theme: garrettboatman/Blank-Theme-Jekyll
 title: Experiments with GitHub Pages
 description: Very much always a WIP
 permalink: /:title
+
+#############
+# Renderers #
+#############
+
+markdown: rdiscount
+rdiscount:
+  extensions:
+    - smart
+
+sass:
+  style: compressed
+
+#########
+# Files #
+#########
+
+collections:
+  events:
+    output: true
+    permalink: /event/:name
+  speakers:
+    output: false
+
+defaults:
+  - scope:
+      path: ""
+      type: events
+    values:
+      layout: event
+
+###################
+# Site parameters #
+###################
+
+domain: www.tedxwarwick.com
+
+nav:
+  - name: 'Home'
+    page: '/'
+  - name: 'About'
+    page: '/about'
