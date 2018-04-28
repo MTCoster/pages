@@ -37,7 +37,7 @@ defaults:
 # Site parameters #
 ###################
 
-domain: mtcoster.github.io/pages
+domain: mtcoster.github.io
 
 nav:
   - name: 'Home'
