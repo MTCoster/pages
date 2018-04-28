@@ -7,10 +7,7 @@ permalink: /:title
 # Renderers #
 #############
 
-markdown: rdiscount
-rdiscount:
-  extensions:
-    - smart
+markdown: kramdown
 
 sass:
   style: compressed
