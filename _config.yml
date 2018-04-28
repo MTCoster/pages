@@ -44,3 +44,5 @@ nav:
     page: '/'
   - name: 'About'
     page: '/about'
+
+fb-app-id: "600131706999745"

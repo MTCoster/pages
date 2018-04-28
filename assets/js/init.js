@@ -1,9 +1,9 @@
 'use strict';
 
-function init(url) {
+function init({url, fbAppId}) {
     window.fbAsyncInit = () => {
         FB.init({
-            appId: '600131706999745',
+            appId: fbAppId,
             version: 'v2.12',
             autoLogAppEvents: true,
             status: true,
