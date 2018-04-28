@@ -37,7 +37,7 @@ defaults:
 # Site parameters #
 ###################
 
-domain: www.tedxwarwick.com
+domain: mtcoster.github.io/pages
 
 nav:
   - name: 'Home'
