@@ -37,9 +37,11 @@ defaults:
 domain: mtcoster.github.io
 
 nav:
-  - name: 'Home'
-    page: '/'
-  - name: 'About'
-    page: '/about'
+  - name: "Home"
+    page: "/"
+  - name: "About"
+    page: "/about"
 
 fb-app-id: "600131706999745"
+
+twitter-handle: "TEDxWarwick"

@@ -1,0 +1,20 @@
+butterworth:
+  name: "Butterworth Hall, Warwick Arts Centre"
+  address:
+    street: "Gibbet Hill Road"
+    city: "Coventry"
+    postcode: "CV4 7AL"
+
+slate:
+  name: "The Slate"
+  address:
+    street: "Scarman Road"
+    city: "Coventry"
+    postcode: "CV4 7SH"
+
+ramphal:
+  name: "Ramphal Building"
+  address:
+    street: "Library Road"
+    city: "Coventry"
+    postcode: "CV4 7AL"

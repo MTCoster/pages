@@ -1,18 +1,77 @@
 ---
-layout: default
 ---
 
-<h2>&lt;EVENT_NAME&gt;</h2>
-{{ content }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include links.html %}
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "Event",
+            "name": "{{ page.title }}",
+            "startDate": "{{ page.time.start }}",
+            "endDate": "{{ page.time.end }}",
+            "location": {
+                "@type": "Place",
+                {% assign author = site.data.locations[page.location] %}
+                "name": "{{ location.name }}",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "{{ location.address.street }}",
+                    "addressLocality": "{{ location.address.city }}",
+                    "postalCode": "{{ location.address.postcode }}",
+                    "addressCountry": "UK"
+                }
+            },
+            "image": [
+                "https://example.com/photos/1x1/photo.jpg",
+                "https://example.com/photos/4x3/photo.jpg",
+                "https://example.com/photos/16x9/photo.jpg"
+            ],
+            "description": "{{ page.description | smartify }}",
+            "offers": {
+                "@type": "Offer",
+                "url": "https://www.example.com/event_offer/12345_201803180430",
+                "price": "30",
+                "priceCurrency": "USD",
+                "availability": "http://schema.org/InStock",
+                "validFrom": "2017-01-20T16:20-08:00"
+            },
+            "performer": [
+                {% for key in page.speakers %}
+                    {% assign speaker = site.speakers | where: "name", key | first %}
+                    {
+                        "@type": "Performer",
+                        "name": "{{ speaker.name }}",
+                        "worksFor": "{{ speaker.organisation }}"
+                    },
+                {% endfor %}
+            ]
+        }
+    </script>
+</head>
+<body>
+    {% include header.html %}
+    <main>
+        <div class="container">
+            <h2>&lt;EVENT_NAME&gt;</h2>
+            {{ content }}
 
-{% for key in page.speakers %}
-    {% assign speaker = site.speakers | where: "name", key | first %}
+            {% for key in page.speakers %}
+                {% assign speaker = site.speakers | where: "name", key | first %}
 
-    <div class="speaker">
-        <h3>{{ speaker.name }}</h3>
-        <p>{{ speaker.content | markdownify }}</p>
-    </div>
-    <img src="//img.youtube.com/vi/{{ speaker.video }}/mqdefault.jpg">
-{% endfor %}
-
-<hr>
+                <div class="speaker">
+                    <h3>{{ speaker.name }}</h3>
+                    <p>{{ speaker.content | markdownify }}</p>
+                </div>
+                <img src="//img.youtube.com/vi/{{ speaker.video }}/mqdefault.jpg">
+            {% endfor %}
+        </div>
+    </main>
+    {% include footer.html %}
+    {% if page.script.size > 0 %}
+        <script type="application/javascript">{{ page.script }}</script>
+    {% endif %}
+</body>
+</html>
