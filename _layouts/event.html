@@ -10,11 +10,12 @@
             "@context": "http://schema.org",
             "@type": "Event",
             "name": "{{ page.title }}",
+            "description": "{{ page.description | smartify }}",
             "startDate": "{{ page.time.start }}",
             "endDate": "{{ page.time.end }}",
             "location": {
                 "@type": "Place",
-                {% assign author = site.data.locations[page.location] %}
+                {% assign location = site.data.locations[page.location] %}
                 "name": "{{ location.name }}",
                 "address": {
                     "@type": "PostalAddress",
@@ -29,7 +30,6 @@
                 "https://example.com/photos/4x3/photo.jpg",
                 "https://example.com/photos/16x9/photo.jpg"
             ],
-            "description": "{{ page.description | smartify }}",
             "offers": {
                 "@type": "Offer",
                 "url": "https://www.example.com/event_offer/12345_201803180430",
@@ -42,7 +42,7 @@
                 {% for key in page.speakers %}
                     {% assign speaker = site.speakers | where: "name", key | first %}
                     {
-                        "@type": "Performer",
+                        "@type": "Person",
                         "name": "{{ speaker.name }}",
                         "worksFor": "{{ speaker.organisation }}"
                     }{% if forloop.last == false %},{% endif %}
