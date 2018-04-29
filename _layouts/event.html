@@ -45,7 +45,7 @@
                         "@type": "Performer",
                         "name": "{{ speaker.name }}",
                         "worksFor": "{{ speaker.organisation }}"
-                    },
+                    }{% if forloop.last == false %},{% endif %}
                 {% endfor %}
             ]
         }
