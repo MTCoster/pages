@@ -6,7 +6,7 @@
         {
             "@context": "http://schema.org",
             "@type": "Event",
-            {% assign eventType = site.data.eventtypes[page.type] %}
+            {% assign eventType = site.data["event-types"][page.type] %}
             "name": "{{ eventType.name }}: {{ page.title }}",
             "description": "{{ page.description | smartify }}",
             "startDate": "{{ page.time.start }}",
