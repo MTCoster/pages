@@ -38,7 +38,7 @@
             },
             "performer": [
                 {% for key in page.speakers %}
-                    {% assign speaker = site.speakers | where: "name", key | first %}
+                    {% assign speaker = site.speakers | where: "slug", key | first %}
                     {
                         "@type": "Person",
                         {% if speaker.organisation %}
