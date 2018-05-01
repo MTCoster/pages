@@ -1,15 +1,13 @@
----
----
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en_GB">
 <head>
     {% include links.html %}
     <script type="application/ld+json">
         {
             "@context": "http://schema.org",
             "@type": "Event",
-            "name": "{{ page.title }}",
+            {% assign eventType = site.data.eventTypes[page.type] %}
+            "name": "{{ eventType.name }}: {{ page.title }}",
             "description": "{{ page.description | smartify }}",
             "startDate": "{{ page.time.start }}",
             "endDate": "{{ page.time.end }}",
@@ -43,8 +41,11 @@
                     {% assign speaker = site.speakers | where: "name", key | first %}
                     {
                         "@type": "Person",
-                        "name": "{{ speaker.name }}",
-                        "worksFor": "{{ speaker.organisation }}"
+                        {% if speaker.organisation %}
+                            "worksFor": "{{ speaker.organisation }}",
+                        {% endif %}
+                        "name": "{{ speaker.title }}",
+                        "image": "{{ site.url }}{{ "/assets/img/speakers" | relative_url }}/{{ page.slug }}/{{ speaker.slug }}.png"
                     }{% if forloop.last == false %},{% endif %}
                 {% endfor %}
             ]
@@ -55,17 +56,21 @@
     {% include header.html %}
     <main>
         <div class="container">
-            <h2>&lt;EVENT_NAME&gt;</h2>
+            <h1>{{ page.title }}</h1>
             {{ content }}
 
             {% for key in page.speakers %}
-                {% assign speaker = site.speakers | where: "name", key | first %}
+                {% assign speaker = site.speakers | where: "slug", key | first %}
 
                 <div class="speaker">
-                    <h3>{{ speaker.name }}</h3>
+                    <h3>{{ speaker.title }}</h3>
+                    {% assign imgBase = "/assets/img/speakers/" | append: page.slug | append: "/" | append: speaker.slug | relative_url %}
+                    <img src="{{ imgBase }}.png" srcset="{{ imgBase }}@2x.png 2x" alt="{{ speaker.title }}">
                     <p>{{ speaker.content | markdownify }}</p>
                 </div>
-                <img src="//img.youtube.com/vi/{{ speaker.video }}/mqdefault.jpg">
+                {% if speaker.video %}
+                    <img src="//img.youtube.com/vi/{{ speaker.video }}/mqdefault.jpg">
+                {% endif %}
             {% endfor %}
         </div>
     </main>

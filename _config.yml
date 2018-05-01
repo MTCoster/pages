@@ -16,10 +16,12 @@ sass:
 # Files #
 #########
 
+collections_dir: _collections
+
 collections:
   events:
     output: true
-    permalink: /event/:name
+    # permalink: /events/:name ## default -> /:collection/:path
   speakers:
     output: false
 
@@ -29,6 +31,11 @@ defaults:
       type: events
     values:
       layout: event
+      nav: events
+  - scope:
+      path: ""
+    values:
+      layout: default
 
 ###################
 # Site parameters #
@@ -37,11 +44,18 @@ defaults:
 domain: mtcoster.github.io
 
 nav:
-  - name: "Home"
+  - key: home
+    name: "Home"
     page: "/"
-  - name: "About"
+  - key: events
+    name: "Events"
+    page: "/events"
+  - key: about
+    name: "About"
     page: "/about"
 
 fb-app-id: "600131706999745"
-
+fb-page: "TEDxWarwick"
 twitter-handle: "TEDxWarwick"
+
+repo: "TEDxWarwickTechnical/tedxwarwicktechnical.github.io"

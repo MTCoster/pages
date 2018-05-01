@@ -1,8 +1,19 @@
 ---
 title: false
+nav: home
 ---
 
 # This is a test file
+
+## Header 2
+
+### Header 3
+
+#### Header 4
+
+##### Header 5
+
+###### Header 6
 
 Here is some test content
 

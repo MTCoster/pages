@@ -1,0 +1,10 @@
+---
+nav: events
+title: "Events"
+---
+
+{% assign events = site.events | sort: 'time.start' %}
+{% for event in events reversed %}
+    <h2><a href="{{ event.url | relative_url }}">{{ event.title | markdownify }}</a></h2>
+    <p>{{ event.description | markdownify }}</h2>
+{% endfor %}

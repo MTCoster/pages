@@ -1,28 +1,98 @@
 header {
+    height: 120px;
+    background-color: $color-header;
+    border-bottom: 1px solid $color-header-underscore;
+
     .container {
+        height: 100%;
         display: flex;
         flex-direction: row;
+    }
+
+    .brand {
+        margin: auto;
     }
 
     .nav {
         flex: 1;
         display: flex;
         flex-direction: column;
+    }
 
-        .cta {
-            flex: 1;
+    .cta {
+        flex: 1;
+        text-align: center;
+
+        background-color: $color-unfinished;
+
+        * {
+            margin: auto 0;
+        }
+
+        h3, button {
+            display: inline-block;
         }
     }
 
     nav {
         font-family: $font-menu;
+        text-align: right;
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+        }
 
         li {
-            display: inline-block;
+            display: block;
+            margin-bottom: -1px;
+        }
+
+        @mixin underscore-transition {
+            $duration: 0.2s;
+            $timing: ease;
+            transition: padding-bottom $duration $timing,
+                        border-bottom-width $duration $timing;
         }
 
         a {
-            padding: 1em 0;
+            padding: 1em 1em;
+            display: inline-block;
+            color: $color-nav !important;
+            text-decoration: none;
+            // margin-bottom: 0.25em;
+            text-align: center;
+            border-bottom: 0 solid $color-nav-active;
+
+            @include underscore-transition;
+
+            @mixin active {
+                color: $ted-red !important;
+                border-bottom-width: 0.25em;
+                padding-bottom: calc(1em - 0.25em);
+            }
+
+            &:hover {
+                @include active;
+                @include underscore-transition;
+            }
+
+            &.current {
+                @include active;
+                font-weight: bold;
+            }
+
+            // Prevents slight change in positioning with font-weight change
+            // https://stackoverflow.com/a/32570813/1813169
+            &::after {
+                content: attr(title);
+                display: block;
+                font-weight: bold;
+                height: 0;
+                overflow: hidden;
+                visibility: hidden;
+            }
         }
     }
 }

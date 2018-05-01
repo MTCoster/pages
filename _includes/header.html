@@ -1,12 +1,14 @@
 <header>
     <div class="container">
-        <img class="brand" src="//placehold.it/440x88.png?text={{ "TEDxWarwick (5:1)" | cgi_escape }}">
+        <img class="brand" src="{{ "/assets/img/brand/header-logo.png" | relative_url }}">
         <div class="nav">
-            <h3 class="cta">Get your tickets now <button>Buy tickets</button></h3>
+            <div class="cta">
+                {% include components/cta.html %}
+            </div>
             <nav>
                 <ul>
                     {% for item in site.nav %}
-                        <li><a href="{{ item.page | relative_url }}">{{ item.name }}</a></li>
+                        <li><a href="{{ item.page | relative_url }}" title="{{ item.name }}"{% if item.key == page.nav %} class="current"{% endif %}>{{ item.name }}</a></li>
                     {% endfor %}
                 </ul>
             </nav>

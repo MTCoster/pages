@@ -1,4 +1,5 @@
 ---
+nav: about
 ---
 
 # About TEDxWarwick

@@ -4,9 +4,22 @@ body {
     line-height: 1.375em;
 }
 
+@mixin inner-margin($size) {
+    margin-bottom: $size;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+p {
+    @include inner-margin(1em);
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: $font-heading;
     font-weight: 600;
+    margin: 0.4em 0;
 }
 
 h1 {
@@ -33,8 +46,42 @@ b, strong {
     font-weight: 700;
 }
 
-pre {
+i, em {
+    font-style: italic;
+}
+
+pre, code {
     font-family: $font-code;
+}
+
+pre {
+    margin: 0 10%;
+    width: 80%;
+    max-width: 80%;
+    overflow-x: scroll;
+}
+
+small {
+    font-size: 0.75em;
+}
+
+a {
+    color: inherit;
+
+    &:hover {
+        text-decoration: none;
+        color: $color-link;
+    }
+
+    &:visited, &:active {
+        color: inherit;
+    }
+
+    &.hot {
+        &, &:hover, &:visited, &:active {
+            color: $color-link;
+        }
+    }
 }
 
 // Media queries to follow
